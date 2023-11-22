@@ -1,3 +1,9 @@
+import { MovieForm } from 'components/MovieForm/MovieForm';
+
 export default function MoviesPage() {
-  return <div>Movies</div>;
+  return (
+    <div>
+      <MovieForm />
+    </div>
+  );
 }

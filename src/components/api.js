@@ -7,7 +7,5 @@ https://api.themoviedb.org/`;
 
 export const fetchTrendingMovies = async () => {
   const response = await axios.get(`3/trending/all/week?api_key=${ApiKey}`);
-  console.log(response.data.results);
-
   return response.data.results;
 };

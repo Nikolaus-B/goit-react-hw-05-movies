@@ -19,8 +19,6 @@ export const AppLayout = () => {
       <main>
         <Outlet />
       </main>
-
-      <footer>FOOTER</footer>
     </div>
   );
 };
