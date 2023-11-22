@@ -15,7 +15,7 @@ const MovieSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const MovieForm = ({ onSubmit }) => {
+export const MovieForm = ({ submitClick }) => {
   return (
     <div>
       <Formik
@@ -25,7 +25,7 @@ export const MovieForm = ({ onSubmit }) => {
         validationSchema={MovieSchema}
         onSubmit={(values, actions) => {
           actions.resetForm();
-          onSubmit(values);
+          submitClick(values);
         }}
       >
         <Form>
