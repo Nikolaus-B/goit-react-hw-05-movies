@@ -1,8 +1,16 @@
 import { MovieForm } from 'components/MovieForm/MovieForm';
-import { fetchSearchMovie } from 'components/api';
+import {
+  fetchMovie,
+  fetchMovieCredits,
+  fetchMovieRewiews,
+  fetchSearchMovie,
+} from 'components/api';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-// Oppenheimer
+
+fetchMovie(872585);
+fetchMovieCredits(872585);
+fetchMovieRewiews(872585);
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
