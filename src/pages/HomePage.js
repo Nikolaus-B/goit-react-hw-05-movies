@@ -1,3 +1,4 @@
+import { HomeList } from 'components/HomeList/HomeList';
 import { fetchTrendingMovies } from 'components/api';
 import { useEffect, useState } from 'react';
 
@@ -16,14 +17,5 @@ export default function HomePage() {
 
     getMovies();
   }, []);
-  return (
-    <div>
-      <p>Trending Today</p>
-      <ul>
-        {movies.map(movie => {
-          return <li key={movie.id}>{movie.title || movie.name}</li>;
-        })}
-      </ul>
-    </div>
-  );
+  return <HomeList movies={movies} />;
 }

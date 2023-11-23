@@ -16,12 +16,11 @@ export const fetchSearchMovie = async query => {
   );
   return response.data.results;
 };
-// 872585;
+
 export const fetchMovie = async movieId => {
   const response = await axios.get(
     `3/movie/${movieId}?api_key=${ApiKey}&append_to_response=videos,images,credits&language=en-US`
   );
-  console.log(response.data);
   return response.data;
 };
 
@@ -29,7 +28,6 @@ export const fetchMovieCredits = async movieId => {
   const response = await axios.get(
     `3/movie/${movieId}/credits?api_key=${ApiKey}&append_to_response=videos,images,credits&language=en-US`
   );
-  console.log(response.data);
   return response.data;
 };
 

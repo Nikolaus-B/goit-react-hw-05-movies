@@ -1,16 +1,8 @@
-import { MovieForm } from 'components/MovieForm/MovieForm';
-import {
-  fetchMovie,
-  fetchMovieCredits,
-  fetchMovieRewiews,
-  fetchSearchMovie,
-} from 'components/api';
+import { SearchedMovies } from 'components/SearchedMovies/SearchedMovies';
+import { fetchSearchMovie } from 'components/api';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-fetchMovie(872585);
-fetchMovieCredits(872585);
-fetchMovieRewiews(872585);
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
@@ -43,14 +35,5 @@ export default function MoviesPage() {
     setQuery(`${Date.now()}/${searchedQuery.title}`);
   };
 
-  return (
-    <div>
-      <MovieForm submitClick={onSubmit} />
-      <ul>
-        {movies.map(movie => {
-          return <li key={movie.id}>{movie.title || movie.name}</li>;
-        })}
-      </ul>
-    </div>
-  );
+  return <SearchedMovies onSubmit={onSubmit} movies={movies} />;
 }
