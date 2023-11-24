@@ -7,19 +7,23 @@ import {
   ReviewsContainer,
   ReviewsList,
 } from './Review.styled';
+import { Loader } from 'components/Loader/Loader';
 
 export const Review = () => {
   const [reviews, setReviews] = useState([]);
   const params = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getReview() {
       try {
+        setLoading(true);
         const newReview = await fetchMovieRewiews(params.id);
         setReviews(newReview.results);
       } catch (error) {
         console.log(error);
       } finally {
+        setLoading(false);
       }
     }
     getReview();
@@ -41,6 +45,7 @@ export const Review = () => {
       ) : (
         <NoReviewsMessage>No reviews available</NoReviewsMessage>
       )}
+      {loading && <Loader />}
     </ReviewsContainer>
   );
 };

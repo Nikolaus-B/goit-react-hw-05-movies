@@ -1,31 +1,25 @@
 import { useState, useEffect } from 'react';
 
-export const useMovies = (fetchMoviesFunction, initialQuery = '') => {
-  const [movies, setMovies] = useState([]);
+export const useMovieData = (fetchFunction, id) => {
+  const [data, setData] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getMovies() {
+    async function fetchData() {
       try {
         setLoading(true);
         setError(false);
-
-        const fetchedMovies = await fetchMoviesFunction();
-
-        if (fetchedMovies.length === 0) {
-        } else {
-          setMovies(fetchedMovies);
-        }
+        const newData = await fetchFunction(id);
+        setData(newData);
       } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
       }
     }
+    fetchData();
+  }, [fetchFunction, id]);
 
-    getMovies();
-  }, [fetchMoviesFunction]);
-
-  return { movies, error, loading };
+  return { data, error, loading };
 };

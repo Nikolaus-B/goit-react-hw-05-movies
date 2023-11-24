@@ -3,19 +3,24 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { CastItem, CastList } from './Cast.styled';
 import { NoReviewsMessage } from 'components/Review/Review.styled';
+import { Loader } from 'components/Loader/Loader';
 
 export const Cast = () => {
   const [cast, setCast] = useState([]);
   const params = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getCast() {
       try {
+        setLoading(true);
+
         const newCredits = await fetchMovieCredits(params.id);
         setCast(newCredits.cast);
       } catch (error) {
         console.log(error);
       } finally {
+        setLoading(false);
       }
     }
 
@@ -48,6 +53,7 @@ export const Cast = () => {
       ) : (
         <NoReviewsMessage>No cast available</NoReviewsMessage>
       )}
+      {loading && <Loader />}
     </>
   );
 };
