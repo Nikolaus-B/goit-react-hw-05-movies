@@ -1,7 +1,7 @@
 import { fetchMovieCredits } from 'components/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CastItem, CastList } from './Cast.styled';
+import { CastItem, CastList, NoImage } from './Cast.styled';
 import { NoReviewsMessage } from 'components/Review/Review.styled';
 import { Loader } from 'components/Loader/Loader';
 
@@ -40,7 +40,7 @@ export const Cast = () => {
                     alt={`${actor.name}`}
                   />
                 ) : (
-                  <span>No image found</span>
+                  <NoImage>No image found</NoImage>
                 )}
                 <b>{actor.name}</b>
                 <p>

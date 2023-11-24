@@ -33,3 +33,7 @@ export const CastItem = styled.li`
     color: #bdc3c7;
   }
 `;
+export const NoImage = styled.span`
+  display: block;
+  margin: 10px;
+`;
