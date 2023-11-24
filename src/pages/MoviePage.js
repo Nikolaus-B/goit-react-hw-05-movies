@@ -1,7 +1,7 @@
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { fetchMovie } from 'components/api';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 
 export default function MoviePage() {
   const params = useParams();
@@ -30,6 +30,16 @@ export default function MoviePage() {
         genres={movie.genres}
         score={movie.vote_average}
       />
+
+      <ul>
+        <li>
+          <NavLink to="credits">Cast</NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews">Reviews</NavLink>
+        </li>
+      </ul>
+      <Outlet />
     </div>
   );
 }

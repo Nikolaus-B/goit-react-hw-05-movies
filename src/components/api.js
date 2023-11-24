@@ -35,6 +35,5 @@ export const fetchMovieRewiews = async movieId => {
   const response = await axios.get(
     `3/movie/${movieId}/reviews?api_key=${ApiKey}&append_to_response=videos,images,credits&language=en-US`
   );
-  console.log(response.data);
   return response.data;
 };
