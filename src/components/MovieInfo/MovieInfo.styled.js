@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const MovieContainer = styled.div`
   display: flex;
@@ -75,6 +75,23 @@ export const MovieLink = styled(NavLink)`
 
   &:hover {
     text-decoration: none;
+    color: #3498db;
+    background-color: #34495e;
+  }
+`;
+
+export const BackPageLink = styled(Link)`
+  background-color: #f1c40f;
+  color: #34495e;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 20px;
+  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+
+  &:hover {
     color: #3498db;
     background-color: #34495e;
   }

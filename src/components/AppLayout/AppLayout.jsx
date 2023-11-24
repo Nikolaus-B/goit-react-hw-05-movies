@@ -3,6 +3,7 @@ import { GlobalStyle } from '../GlodalStyle';
 import { Header, HeaderLink, HeaderList } from './AppLayout.styled';
 import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
+import { Loader } from 'components/Loader/Loader';
 
 export const AppLayout = () => {
   return (
@@ -21,7 +22,7 @@ export const AppLayout = () => {
       </Header>
 
       <main>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

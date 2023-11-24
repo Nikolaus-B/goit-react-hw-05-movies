@@ -12,17 +12,16 @@ export const HeaderList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  gap: 10px;
 `;
 
 export const HeaderLink = styled(Link)`
   text-decoration: none;
   color: #34495e;
   font-size: 16px;
-  margin: 0 20px;
   padding: 8px;
   border-radius: 4px;
-  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
 
   &:hover {
     color: #3498db;

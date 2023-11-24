@@ -22,7 +22,7 @@ export const Field = styled(StyledField)`
   height: 40px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #bdc3c7;
+  border: 1.5px solid #bdc3c7;
   border-radius: 4px;
   outline: none;
   transition: border-color 0.3s ease-in-out;
@@ -42,7 +42,7 @@ export const FormButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
 
   &:hover {
     color: #3498db;
