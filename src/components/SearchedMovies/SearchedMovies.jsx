@@ -6,7 +6,7 @@ import {
   SearchedList,
 } from './SearchedMovies.styled';
 
-export const SearchedMovies = ({ onSubmit, movies }) => {
+export const SearchedMovies = ({ onSubmit, movies, location }) => {
   return (
     <>
       <SearchedContainer>
@@ -15,7 +15,10 @@ export const SearchedMovies = ({ onSubmit, movies }) => {
           {movies.map(movie => {
             return (
               <SearchedItem key={movie.id}>
-                <SearchedLink to={`/movies/${movie.id}`}>
+                <SearchedLink
+                  to={`/movies/${movie.id}`}
+                  state={{ from: location }}
+                >
                   {movie.title || movie.name}
                 </SearchedLink>
               </SearchedItem>

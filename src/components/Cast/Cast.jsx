@@ -1,6 +1,7 @@
 import { fetchMovieCredits } from 'components/api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { CastItem, CastList } from './Cast.styled';
 
 export const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -21,10 +22,10 @@ export const Cast = () => {
   }, [params.id]);
 
   return (
-    <ul>
-      {cast.map(actor => {
+    <CastList>
+      {cast.slice(0, 8).map(actor => {
         return (
-          <li key={actor.id}>
+          <CastItem key={actor.id}>
             {actor.profile_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
@@ -33,11 +34,13 @@ export const Cast = () => {
             ) : (
               <span>No image found</span>
             )}
-            <p>{actor.name}</p>
-            <p>Chatacter: {actor.character}</p>
-          </li>
+            <b>{actor.name}</b>
+            <p>
+              Chatacter: <span>{actor.character}</span>
+            </p>
+          </CastItem>
         );
       })}
-    </ul>
+    </CastList>
   );
 };

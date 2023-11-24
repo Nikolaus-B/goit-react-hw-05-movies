@@ -1,11 +1,13 @@
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { fetchMovie } from 'components/api';
-import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 export default function MoviePage() {
   const params = useParams();
   const [movie, setMovie] = useState({});
+  const location = useLocation();
+  const backLinkRef = useRef(location);
 
   useEffect(() => {
     async function getMovies() {
@@ -22,6 +24,7 @@ export default function MoviePage() {
 
   return (
     <div>
+      <Link to={backLinkRef.current.state?.from ?? '/'}>Back</Link>
       <MovieInfo
         moviePoster={movie.poster_path}
         title={movie.title}
@@ -30,15 +33,6 @@ export default function MoviePage() {
         genres={movie.genres}
         score={movie.vote_average}
       />
-
-      <ul>
-        <li>
-          <NavLink to="credits">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
       <Outlet />
     </div>
   );

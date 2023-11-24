@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const MovieContainer = styled.div`
   display: flex;
@@ -57,4 +58,24 @@ export const GenresItem = styled.li`
   margin-right: 10px;
   display: inline-block;
   color: #bdc3c7;
+`;
+
+export const NavList = styled.ul`
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+`;
+
+export const MovieLink = styled(NavLink)`
+  padding: 8px;
+  border-radius: 4px;
+  color: #f39c12;
+  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out,
+    text-decoration 0.5s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    color: #3498db;
+    background-color: #34495e;
+  }
 `;

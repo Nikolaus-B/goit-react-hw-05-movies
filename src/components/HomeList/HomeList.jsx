@@ -6,7 +6,7 @@ import {
   TrendingTitle,
 } from './HomeList.styled';
 
-export const HomeList = ({ movies }) => {
+export const HomeList = ({ movies, location }) => {
   return (
     <TrendingContainer>
       <TrendingTitle>Trending Today</TrendingTitle>
@@ -14,7 +14,10 @@ export const HomeList = ({ movies }) => {
         {movies.map(movie => {
           return (
             <TrendingItem key={movie.id}>
-              <TrendingLink to={`/movies/${movie.id}`}>
+              <TrendingLink
+                to={`/movies/${movie.id}`}
+                state={{ from: location }}
+              >
                 {movie.title || movie.name}
               </TrendingLink>
             </TrendingItem>

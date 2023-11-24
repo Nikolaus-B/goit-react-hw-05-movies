@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { GlobalStyle } from '../GlodalStyle';
 import { Header, HeaderLink, HeaderList } from './AppLayout.styled';
 import { Toaster } from 'react-hot-toast';
+import { Suspense } from 'react';
 
 export const AppLayout = () => {
   return (
@@ -20,7 +21,9 @@ export const AppLayout = () => {
       </Header>
 
       <main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
       <GlobalStyle />
       <Toaster />

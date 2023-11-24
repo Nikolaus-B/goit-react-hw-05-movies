@@ -5,7 +5,9 @@ import {
   InfoContainer,
   MovieContainer,
   MovieImage,
+  MovieLink,
   MovieTitle,
+  NavList,
   Overview,
   UserScore,
 } from './MovieInfo.styled';
@@ -39,6 +41,14 @@ export const MovieInfo = ({
               <GenresItem key={genre.id}>{genre.name}</GenresItem>
             ))}
         </GenresList>
+        <NavList>
+          <li>
+            <MovieLink to="credits">Cast</MovieLink>
+          </li>
+          <li>
+            <MovieLink to="reviews">Reviews</MovieLink>
+          </li>
+        </NavList>
       </InfoContainer>
     </MovieContainer>
   );

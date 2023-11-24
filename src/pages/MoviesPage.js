@@ -2,18 +2,22 @@ import { SearchedMovies } from 'components/SearchedMovies/SearchedMovies';
 import { fetchSearchMovie } from 'components/api';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState('');
+  const location = useLocation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryNew = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (query === '') {
+    if (queryNew === '') {
       return;
     }
 
     async function getMovies() {
-      const clearQuery = query.split('/').pop();
+      const clearQuery = queryNew.split('/').pop();
       try {
         const newMovies = await fetchSearchMovie(clearQuery);
 
@@ -28,12 +32,13 @@ export default function MoviesPage() {
     }
 
     getMovies();
-  }, [query]);
+  }, [queryNew]);
 
   const onSubmit = searchedQuery => {
-    setMovies([]);
-    setQuery(`${Date.now()}/${searchedQuery.title}`);
+    setSearchParams({ query: `${Date.now()}/${searchedQuery.title}` });
   };
 
-  return <SearchedMovies onSubmit={onSubmit} movies={movies} />;
+  return (
+    <SearchedMovies onSubmit={onSubmit} movies={movies} location={location} />
+  );
 }
