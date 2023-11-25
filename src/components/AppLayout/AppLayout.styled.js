@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Header = styled.header`
@@ -15,13 +15,18 @@ export const HeaderList = styled.ul`
   gap: 10px;
 `;
 
-export const HeaderLink = styled(Link)`
+export const HeaderLink = styled(NavLink)`
   text-decoration: none;
   color: #34495e;
   font-size: 16px;
   padding: 8px;
   border-radius: 4px;
   transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
+
+  &:active {
+    color: #3498db;
+    background-color: #34495e;
+  }
 
   &:hover {
     color: #3498db;

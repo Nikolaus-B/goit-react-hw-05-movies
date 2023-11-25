@@ -1,6 +1,6 @@
 import { Loader } from 'components/Loader/Loader';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
-import { fetchMovie } from 'components/api';
+import { fetchMovie } from 'api';
 import { useMovieData } from 'hooks/useMovie';
 import { useRef } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';

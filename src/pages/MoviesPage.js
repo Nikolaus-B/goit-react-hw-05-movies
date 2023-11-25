@@ -1,6 +1,6 @@
 import { Loader } from 'components/Loader/Loader';
 import { SearchedMovies } from 'components/SearchedMovies/SearchedMovies';
-import { fetchSearchMovie } from 'components/api';
+import { fetchSearchMovie } from 'api';
 import { useHomeOrSearch } from 'hooks/useHomeOrSearch';
 import { useLocation, useSearchParams } from 'react-router-dom';
 

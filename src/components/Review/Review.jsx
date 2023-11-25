@@ -1,4 +1,4 @@
-import { fetchMovieRewiews } from 'components/api';
+import { fetchMovieRewiews } from 'api';
 import { useParams } from 'react-router-dom';
 import {
   NoReviewsMessage,

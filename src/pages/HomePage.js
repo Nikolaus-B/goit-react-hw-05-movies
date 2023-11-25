@@ -1,6 +1,6 @@
 import { HomeList } from 'components/HomeList/HomeList';
 import { Loader } from 'components/Loader/Loader';
-import { fetchTrendingMovies } from 'components/api';
+import { fetchTrendingMovies } from 'api';
 import { useHomeOrSearch } from 'hooks/useHomeOrSearch';
 
 import { useLocation } from 'react-router-dom';

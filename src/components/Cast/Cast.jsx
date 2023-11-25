@@ -1,4 +1,4 @@
-import { fetchMovieCredits } from 'components/api';
+import { fetchMovieCredits } from 'api';
 
 import { useParams } from 'react-router-dom';
 import { CastItem, CastList, NoImage } from './Cast.styled';
