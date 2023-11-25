@@ -1,31 +1,14 @@
 import { fetchMovieCredits } from 'components/api';
-import { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 import { CastItem, CastList, NoImage } from './Cast.styled';
 import { NoReviewsMessage } from 'components/Review/Review.styled';
 import { Loader } from 'components/Loader/Loader';
+import { useMovieData } from 'hooks/useMovie';
 
 export const Cast = () => {
-  const [cast, setCast] = useState([]);
   const params = useParams();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function getCast() {
-      try {
-        setLoading(true);
-
-        const newCredits = await fetchMovieCredits(params.id);
-        setCast(newCredits.cast);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getCast();
-  }, [params.id]);
+  const { data: cast, loading } = useMovieData(fetchMovieCredits, params.id);
 
   return (
     <>

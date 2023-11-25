@@ -1,5 +1,4 @@
 import { fetchMovieRewiews } from 'components/api';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   NoReviewsMessage,
@@ -8,26 +7,11 @@ import {
   ReviewsList,
 } from './Review.styled';
 import { Loader } from 'components/Loader/Loader';
+import { useMovieData } from 'hooks/useMovie';
 
 export const Review = () => {
-  const [reviews, setReviews] = useState([]);
   const params = useParams();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function getReview() {
-      try {
-        setLoading(true);
-        const newReview = await fetchMovieRewiews(params.id);
-        setReviews(newReview.results);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getReview();
-  }, [params.id]);
+  const { data: reviews, loading } = useMovieData(fetchMovieRewiews, params.id);
 
   return (
     <ReviewsContainer>
